@@ -11,8 +11,8 @@ function randomIntFromInterval(min, max) {
 
 mongoose.connect(
   // "mongodb+srv://mongo:Aa55892004@cluster0.bdwd9ao.mongodb.net/?retryWrites=true&w=majority"
-  process.env.DATABASE_URL ||
-    "mongodb+srv://mongo:Aa55892004@cluster0.bdwd9ao.mongodb.net/Cluster0?retryWrites=true&w=majority",
+  // process.env.DATABASE_URL ||
+  "mongodb+srv://mongo:Aa55892004@cluster0.bdwd9ao.mongodb.net/Cluster0?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -42,7 +42,7 @@ app.get("/", cors(), async (req, res) => {
 
 app.post("/submit", cors(), async (req, res) => {
   const { name, studentId } = req.body;
-  const preStudent = await STUDENT.findOne({ name, studentId});
+  const preStudent = await STUDENT.findOne({ name, studentId });
   if (preStudent) {
     res.status(400).send({
       message: "این اسم و شماره دانشجویی از قبل ثبت شده است.",
